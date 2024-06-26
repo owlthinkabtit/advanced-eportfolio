@@ -9,7 +9,19 @@
       src="https://kit.fontawesome.com/c8e4d183c2.js"
       crossorigin="anonymous"
     ></script>
+    <script src="index.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "0wlUWQFSvr417uUTg",
+      });
+   })();
+</script>
   </head>
+
   <body>
     <section id="landing-page">
       <nav>
@@ -93,9 +105,8 @@
           <h4 class="modal__sub-title modal__sub-title--about">Frontend Software Engineer</h4>
           <p class="modal__para"> I'm a <b class="secondary">Frontend Software Engineer</b> from Philadelphia, PA. 
             <br>I am passionate about solving technical problems as well as providing effective and efficient support. 
-            <br>I have been in the IT field for <b class="secondary">9 years</b> as a <b class="secondary">Senior Desktop Technician</b>; I wanted to shake things up.</br>
-            <br>Creating things and seeing them come to life, <i>and</i> make a real difference that I can be proud of. 
-            <br>That is endgame for me. 
+            <br>I have been in the IT field for <b class="secondary">9 years</b> as a <b class="secondary">Senior Desktop Technician</b>; I wanted to shake things up.
+            <br>Creating things and seeing them come to life, <i>and</i> make a real difference that I can be proud of.
           </p>
           <div class="modal__languages">
             <figure class="modal__language">
@@ -116,7 +127,36 @@
             </figure>
           </div>
         </div>
-        <div class="modal__half modal__contact">Let's Have a chat</div>
+        <div class="modal__half modal__contact">
+          <h3 class="modal__title modal__title--contact">Talk to me, I talk back.</h3>
+          <h4 class="modal__sub-title modal__sub-title--contact">
+            I'm currently open to new opportunities, can't wait to discuss them with you!
+          </h4>
+          <form id="contact__form" onsubmit="contact(event)">
+            <div class="form__item">
+              <label class="form__item--label">Name</label>
+              <input class="input" name="user_name" type="text" required></input>
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Email</label>
+              <input class="input" name="user_email" type="text"></input>
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Message</label>
+              <textarea class="input" name="message" type="text"></textarea>
+            </div>
+            <button id="contact__submit" class="form__submit">
+              Send it my way
+            </button>
+          </form>
+          <div class="modal__overlay modal__overlay--loading">
+            <i class="fas fa-spinner"></i>
+          </div>
+          <div class="modal__overlay modal__overlay--success">
+            Thanks for the message! Looking forward to speaking with you soon.
+          </div>
+        </div>
+        <i class="fas fa-times modal__exit click"></i>
       </div>
     </section>
     <section id="projects">
