@@ -1,19 +1,32 @@
-// template_hwc0sls
-// service_ixamp5k
-// 0wlUWQFSvr417uUTg
-
 function contact(event) {
-    event.preventDeafult();
-    emailjs
-    //.sendForm(
-      //'service_ixamp5k',
-      //'template_hwc0sls',
-      //event.target,
-      //'0wlUWQFSvr417uUTg'//
-    //).then(() => {
-    // console.log('this worked') 
-    //})
-    setTimeout(() => {
-      console.log('it worked 1')
-    }, 500);
+  event.preventDefault();
+  const loading = document.querySelector('.modal__overlay--loading');
+  const success = document.querySelector('.modal__overlay--success');
+  loading.classList += " modal__overlay--visible";
+
+  emailjs
+  .sendForm(
+    'service_ixamp5k',
+    'template_hwc0sls',
+    event.target,
+    'aywvml4EyzFoKM39i'
+  ).then(() => {
+    loading.classList.remove("modal__overlay--visible");
+    success.classList += " modal__overlay--visible";
+  }).catch(() => {
+    loading.classList.remove("modal__overlay--visible");
+    alert(
+      "The email service is temporarily unavailabe. Please contact me directly at haggins.jameka@gmail.com"
+    );
+  })
+}
+
+let isModalOpen = false;
+function toggleModal() {
+  if(isModalOpen) {
+    isModalOpen = false;
+    return document.body.classList.remove("modal--open")
+  }
+  isModalOpen = true;
+  document.body.classList += " modal--open";
 }
